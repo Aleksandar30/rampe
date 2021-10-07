@@ -6,7 +6,19 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
+
+extension DefaultsKeys {
+    var username: DefaultsKey<String?> { .init("username") }
+    var password: DefaultsKey<String?> { .init("password") }
+    var isLogin: DefaultsKey<String?> { .init("isLogin") }
+    var id_obj: DefaultsKey<String?> { .init("id_obj") }
+    var role_id: DefaultsKey<String?> { .init("role_id") }
+    var devices_id: DefaultsKey<String?> { .init("devices_id") }
+    var devices_name: DefaultsKey<String?> { .init("devices_name") }
+    var devices_type: DefaultsKey<String?> { .init("devices_type") }
+}
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -16,7 +28,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        if Defaults[\.isLogin] == "true" {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "HomeVC")
+
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+
+        }
+
         guard let _ = (scene as? UIWindowScene) else { return }
+         
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
