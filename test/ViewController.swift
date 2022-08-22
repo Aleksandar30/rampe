@@ -43,6 +43,7 @@ class ViewController: UIViewController {
          
         // HTTP Request Parameters which will be sent in HTTP Request Body
         let postString = "data={\"password\":\"\(passwordText.text!)\",\"id_obj\":0,\"action\":0,\"username\":\"\(userText.text!)\"}"
+        print("postString:" + postString)
         // Set HTTP Request Body
         request.httpBody = postString.data(using: String.Encoding.utf8);
         // Perform HTTP Request
@@ -89,6 +90,7 @@ class ViewController: UIViewController {
                     } else {
                         DispatchQueue.main.async {
                             self.makeAlert(alertTitle: "Greska", alertMessage: "Podaci o korisniku nisu ispravni")
+                            print(dataResponse)
                         }
                         
                     }

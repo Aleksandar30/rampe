@@ -77,6 +77,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // Convert HTTP Response Data to a String
                 if let data = data {
                     let dataResponse = JSON(data)
+                    print(dataResponse)
                     if dataResponse["err"].intValue == 0 {
                         let statuses = dataResponse["statuses"].stringValue.components(separatedBy: ",")
                         //Pokusaj da se ispravi greska da aplikacija pukne pri
@@ -188,9 +189,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let deviceIDArray = JSON(device_id).stringValue.components(separatedBy: ",")
         //print("Otvaranje rampe:" + String(entities[buttonRow].getId()))
         
-        let url = URL(string: "http://rampe.institutdedinje.org/services/odrzavanje.php")!
+        //let url = URL(string: "http://rampe.institutdedinje.org/services/odrzavanje.php")!
         //Dummy url for testing:
-        //let url = URL(string: "www.nekisajt.com")!
+        let url = URL(string: "https://ptsv2.com/t/8jeam-1654252957/post")!
         // Prepare URL Request Object
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
